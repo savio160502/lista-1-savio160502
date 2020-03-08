@@ -15,14 +15,16 @@
   (define (good-enough? guess)
     (< (abs (- (square guess) x)) 0.00001))
 
-  (define (good-enough2? ...)
-    ...)
+(define (good-enough?2 guess)
+    (< (/ (abs (- (square guess) x)) x) 0.00001))
 
   (define (improve guess)
     (average guess (/ x guess)))
 
   (define (sqrt-iter guess)
-    ...)
+    (if (good-enough?2 guess)                        
+        guess
+        (sqrt-iter (improve guess))))
 
   (sqrt-iter 1.0))
 
